@@ -1,0 +1,117 @@
+// Variables
+
+$gf-columns: 12 !default;
+$gf-gutter-width: 1rem !default;
+$gf-gutter-compensation: (($gf-gutter-width * .5) * -1) !default;
+$gf-outer-margin: 1rem !default;
+
+$gf-name-xs: 'xs' !default;
+$gf-name-sm: 'sm' !default;
+$gf-name-md: 'md' !default;
+$gf-name-lg: 'lg' !default;
+$gf-name-xl: 'xl' !default;
+
+$gf-breakpoint-sm: 36rem !default; // 576px
+$gf-breakpoint-md: 48rem !default; // 768px
+$gf-breakpoint-lg: 64rem !default; // 1024px
+$gf-breakpoint-xl: 75rem !default; // 1200px
+
+$gf-class-container: 'container' !default;
+$gf-class-container-fluid: 'container-fluid' !default;
+$gf-class-row: 'row' !default;
+$gf-class-column: 'col' !default;
+$gf-class-push: 'push' !default;
+$gf-class-pull: 'pull' !default;
+$gf-class-offset: 'offset' !default;
+
+.#{ $gf-class-container } {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  padding-left: $gf-outer-margin;
+  padding-right: $gf-outer-margin;
+
+  @media only screen and (min-width: $gf-breakpoint-sm){
+    width: $gf-breakpoint-sm - ($gf-outer-margin * 3);
+  }
+
+  @media only screen and (min-width: $gf-breakpoint-md){
+    width: $gf-breakpoint-md - ($gf-outer-margin * 3);
+  }
+
+  @media only screen and (min-width: $gf-breakpoint-lg){
+    width: $gf-breakpoint-lg - ($gf-outer-margin * 3);
+  }
+
+  @media only screen and (min-width: $gf-breakpoint-xl){
+    width: $gf-breakpoint-xl - ($gf-outer-margin * 3);
+  }
+}
+
+.#{ $gf-class-container-fluid } {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $gf-outer-margin;
+  padding-right: $gf-outer-margin;
+}
+
+.#{ $gf-class-row } {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: $gf-gutter-compensation;
+  margin-right: $gf-gutter-compensation;
+}
+
+%col {
+  flex-grow: 0;
+  flex-shrink: 0;
+  padding-left: $gf-gutter-width / 2;
+  padding-right: $gf-gutter-width / 2;
+}
+
+// .#{ $gf-class-column }-#{ $gf-name-xs } {
+//   @extend %col;
+// }
+
+/* Col */
+
+@for $i from 1 through $gf-columns {
+  .#{ $gf-class-column }-#{ $gf-name-xs }-#{ $i } {
+    @extend %col;
+    flex-basis: (100% / $gf-columns) * $i;
+    max-width: (100% / $gf-columns) * $i;
+  }
+}
+
+/* Push */
+
+@for $i from 0 through $gf-columns {
+  .#{ $gf-class-push }-#{ $gf-name-xs }-#{ $i } {
+    @if $i == 0 {
+      left: auto;
+    } @else {
+      left: (100% / $gf-columns) * $i;
+    }
+  }
+}
+
+/* Pull */
+
+@for $i from 0 through $gf-columns {
+  .#{ $gf-class-pull }-#{ $gf-name-xs }-#{ $i } {
+    @if $i == 0 {
+      right: auto;
+    } @else {
+      right: (100% / $gf-columns) * $i;
+    }
+  }
+}
+
+/* Offset */
+
+@for $i from 1 through $gf-columns {
+  .#{ $gf-class-offset }-#{ $gf-name-xs }-#{ $i } {
+    margin-left: (100% / $gf-columns) * $i;
+  }
+}
