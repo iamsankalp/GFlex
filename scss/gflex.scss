@@ -70,48 +70,130 @@ $gf-class-offset: 'offset' !default;
   padding-right: $gf-gutter-width / 2;
 }
 
+@for $i from 1 through $gf-columns {
+  .#{ $gf-class-column }-#{ $gf-name-xs }-#{ $i } {
+    @extend %col;
+  }
+}
+
+@for $i from 1 through $gf-columns {
+  .#{ $gf-class-column }-#{ $gf-name-sm }-#{ $i } {
+    @extend %col;
+  }
+}
+
+@for $i from 1 through $gf-columns {
+  .#{ $gf-class-column }-#{ $gf-name-md }-#{ $i } {
+    @extend %col;
+  }
+}
+
+@for $i from 1 through $gf-columns {
+  .#{ $gf-class-column }-#{ $gf-name-lg }-#{ $i } {
+    @extend %col;
+  }
+}
+
+@for $i from 1 through $gf-columns {
+  .#{ $gf-class-column }-#{ $gf-name-xl }-#{ $i } {
+    @extend %col;
+  }
+}
+
 // .#{ $gf-class-column }-#{ $gf-name-xs } {
 //   @extend %col;
 // }
 
-/* Col */
+// Mixins
 
-@for $i from 1 through $gf-columns {
-  .#{ $gf-class-column }-#{ $gf-name-xs }-#{ $i } {
-    @extend %col;
-    flex-basis: (100% / $gf-columns) * $i;
-    max-width: (100% / $gf-columns) * $i;
-  }
-}
+@mixin col($selector) {
+  /*******************
+  Col-#{ $selector }
+  *******************/
 
-/* Push */
-
-@for $i from 0 through $gf-columns {
-  .#{ $gf-class-push }-#{ $gf-name-xs }-#{ $i } {
-    @if $i == 0 {
-      left: auto;
-    } @else {
-      left: (100% / $gf-columns) * $i;
+  @for $i from 1 through $gf-columns {
+    .#{ $gf-class-column }-#{ $selector }-#{ $i } {
+      flex-basis: (100% / $gf-columns) * $i;
+      max-width: (100% / $gf-columns) * $i;
     }
   }
 }
 
-/* Pull */
+@mixin push($selector) {
+  /*******************
+  Push-#{ $selector }
+  *******************/
 
-@for $i from 0 through $gf-columns {
-  .#{ $gf-class-pull }-#{ $gf-name-xs }-#{ $i } {
-    @if $i == 0 {
-      right: auto;
-    } @else {
-      right: (100% / $gf-columns) * $i;
+  @for $i from 0 through $gf-columns {
+    .#{ $gf-class-push }-#{ $selector }-#{ $i } {
+      @if $i == 0 {
+        left: auto;
+      } @else {
+        left: (100% / $gf-columns) * $i;
+      }
     }
   }
 }
 
-/* Offset */
+@mixin pull($selector) {
+  /*******************
+  Pull-#{ $selector }
+  *******************/
 
-@for $i from 1 through $gf-columns {
-  .#{ $gf-class-offset }-#{ $gf-name-xs }-#{ $i } {
-    margin-left: (100% / $gf-columns) * $i;
+  @for $i from 0 through $gf-columns {
+    .#{ $gf-class-pull }-#{ $selector }-#{ $i } {
+      @if $i == 0 {
+        right: auto;
+      } @else {
+        right: (100% / $gf-columns) * $i;
+      }
+    }
   }
+}
+
+@mixin offset($selector) {
+  /*******************
+  Offset-#{ $selector }
+  *******************/
+
+  @for $i from 1 through $gf-columns - 1 {
+    .#{ $gf-class-offset }-#{ $selector }-#{ $i } {
+      margin-left: (100% / $gf-columns) * $i;
+    }
+  }
+}
+
+// See it in action
+
+@include col($gf-name-xs);
+@include push($gf-name-xs);
+@include pull($gf-name-xs);
+@include offset($gf-name-xs);
+
+@media only screen and (min-width: $gf-breakpoint-sm) {
+  @include col($gf-name-sm);
+  @include push($gf-name-sm);
+  @include pull($gf-name-sm);
+  @include offset($gf-name-sm);
+}
+
+@media only screen and (min-width: $gf-breakpoint-md) {
+  @include col($gf-name-md);
+  @include push($gf-name-md);
+  @include pull($gf-name-md);
+  @include offset($gf-name-md);
+}
+
+@media only screen and (min-width: $gf-breakpoint-lg) {
+  @include col($gf-name-lg);
+  @include push($gf-name-lg);
+  @include pull($gf-name-lg);
+  @include offset($gf-name-lg);
+}
+
+@media only screen and (min-width: $gf-breakpoint-xl) {
+  @include col($gf-name-xl);
+  @include push($gf-name-xl);
+  @include pull($gf-name-xl);
+  @include offset($gf-name-xl);
 }
