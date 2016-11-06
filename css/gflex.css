@@ -388,13 +388,6 @@ Offset-xs
           justify-content: space-between;
 }
 
-.reverse-xs {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-}
-
 @media only screen and (min-width: 36rem) {
   /*******************
   Col-Equal-sm
@@ -725,13 +718,6 @@ Offset-xs
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
-  }
-
-  .reverse-sm {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: row-reverse;
-            flex-direction: row-reverse;
   }
 }
 @media only screen and (min-width: 48rem) {
@@ -1065,13 +1051,6 @@ Offset-xs
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-
-  .reverse-md {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: row-reverse;
-            flex-direction: row-reverse;
-  }
 }
 @media only screen and (min-width: 64rem) {
   /*******************
@@ -1404,13 +1383,6 @@ Offset-xs
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-
-  .reverse-lg {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: row-reverse;
-            flex-direction: row-reverse;
-  }
 }
 @media only screen and (min-width: 80rem) {
   /*******************
@@ -1742,12 +1714,5 @@ Offset-xs
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
-  }
-
-  .reverse-xl {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: row-reverse;
-            flex-direction: row-reverse;
   }
 }

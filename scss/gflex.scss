@@ -39,8 +39,6 @@ $gf-utility-unordered: 'unordered' !default;
 $gf-utility-around: 'around' !default;
 $gf-utility-between: 'between' !default;
 
-$gf-utility-reverse: 'reverse' !default;
-
 //Classes
 
 .#{ $gf-class-container } {
@@ -247,10 +245,6 @@ $gf-utility-reverse: 'reverse' !default;
 
   .#{ $gf-utility-between }-#{ $selector } {
     justify-content: space-between;
-  }
-
-  .#{ $gf-utility-reverse }-#{ $selector } {
-    flex-direction: row-reverse;
   }
 
 }
