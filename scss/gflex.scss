@@ -24,6 +24,25 @@ $gf-class-push: 'push' !default;
 $gf-class-pull: 'pull' !default;
 $gf-class-offset: 'offset' !default;
 
+$gf-utility-left: 'left' !default;
+$gf-utility-center: 'center' !default;
+$gf-utility-right: 'right' !default;
+
+$gf-utility-top: 'top' !default;
+$gf-utility-middle: 'middle' !default;
+$gf-utility-bottom: 'bottom' !default;
+
+$gf-utility-first: 'first' !default;
+$gf-utility-last: 'last' !default;
+$gf-utility-unordered: 'unordered' !default;
+
+$gf-utility-around: 'around' !default;
+$gf-utility-between: 'between' !default;
+
+$gf-utility-reverse: 'reverse' !default;
+
+//Classes
+
 .#{ $gf-class-container } {
   margin-left: auto;
   margin-right: auto;
@@ -100,11 +119,20 @@ $gf-class-offset: 'offset' !default;
   }
 }
 
-// .#{ $gf-class-column }-#{ $gf-name-xs } {
-//   @extend %col;
-// }
+@mixin col-equal($selector) {
+  /*******************
+  Col-Equal-#{ $selector }
+  *******************/
 
-// Mixins
+  .#{ $gf-class-column }-#{ $selector } {
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 0;
+    max-width: 100%;
+    padding-left: $gf-gutter-width / 2;
+    padding-right: $gf-gutter-width / 2;
+  }
+}
 
 @mixin col($selector) {
   /*******************
@@ -163,37 +191,111 @@ $gf-class-offset: 'offset' !default;
   }
 }
 
+@mixin utilities($selector) {
+
+  .#{ $gf-utility-left }-#{ $selector } {
+    justify-content: flex-start;
+  }
+
+  .#{ $gf-utility-center }-#{ $selector } {
+    justify-content: center;
+  }
+
+  .#{ $gf-utility-right }-#{ $selector } {
+    justify-content: flex-end;
+  }
+
+  .#{ $gf-utility-top }-#{ $selector } {
+    align-items: flex-start;
+  }
+
+  .#{ $gf-utility-middle }-#{ $selector } {
+    align-items: center;
+  }
+
+  .#{ $gf-utility-bottom }-#{ $selector } {
+    align-items: flex-end;
+  }
+
+  .#{ $gf-utility-top }-#{ $selector }-self {
+    align-self: flex-start;
+  }
+
+  .#{ $gf-utility-middle }-#{ $selector }-self {
+    align-self: center;
+  }
+
+  .#{ $gf-utility-bottom }-#{ $selector }-self {
+    align-self: flex-end;
+  }
+
+  .#{ $gf-utility-first }-#{ $selector } {
+    order: -1;
+  }
+
+  .#{ $gf-utility-last }-#{ $selector } {
+    order: 1;
+  }
+
+  .#{ $gf-utility-unordered }-#{ $selector } {
+    order: 0;
+  }
+
+  .#{ $gf-utility-around }-#{ $selector } {
+    justify-content: space-around;
+  }
+
+  .#{ $gf-utility-between }-#{ $selector } {
+    justify-content: space-between;
+  }
+
+  .#{ $gf-utility-reverse }-#{ $selector } {
+    flex-direction: row-reverse;
+  }
+
+}
+
 // See it in action
 
+@include col-equal($gf-name-xs);
 @include col($gf-name-xs);
 @include push($gf-name-xs);
 @include pull($gf-name-xs);
 @include offset($gf-name-xs);
+@include utilities($gf-name-xs);
 
 @media only screen and (min-width: $gf-breakpoint-sm) {
+  @include col-equal($gf-name-sm);
   @include col($gf-name-sm);
   @include push($gf-name-sm);
   @include pull($gf-name-sm);
   @include offset($gf-name-sm);
+  @include utilities($gf-name-sm);
 }
 
 @media only screen and (min-width: $gf-breakpoint-md) {
+  @include col-equal($gf-name-md);
   @include col($gf-name-md);
   @include push($gf-name-md);
   @include pull($gf-name-md);
   @include offset($gf-name-md);
+  @include utilities($gf-name-md);
 }
 
 @media only screen and (min-width: $gf-breakpoint-lg) {
+  @include col-equal($gf-name-lg);
   @include col($gf-name-lg);
   @include push($gf-name-lg);
   @include pull($gf-name-lg);
   @include offset($gf-name-lg);
+  @include utilities($gf-name-lg);
 }
 
 @media only screen and (min-width: $gf-breakpoint-xl) {
+  @include col-equal($gf-name-xl);
   @include col($gf-name-xl);
   @include push($gf-name-xl);
   @include pull($gf-name-xl);
   @include offset($gf-name-xl);
+  @include utilities($gf-name-xl);
 }
